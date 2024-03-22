@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "webserver mode",
+            "type": "dart",
+            "request": "launch",
+            "args": [
+                "-d",
+                "web-server",
+                "--web-port",
+                "8080"
+            ],
+        }
+    ]
+}
