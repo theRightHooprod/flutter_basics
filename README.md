@@ -2,7 +2,7 @@
 
 Proyecto para preparación en conceptos básicos de flutter
 
-Ideas para el proyecto propuestas
+Ideas para el tema del proyecto
 
 - [ ] app de inventario (navil)
 
