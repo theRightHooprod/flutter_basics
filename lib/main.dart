@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const Principal());
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: Principal()));
 }
 
 class Principal extends StatelessWidget {
@@ -9,8 +11,7 @@ class Principal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         backgroundColor: Colors.red,
         appBar: AppBar(
           foregroundColor: Colors.white,
@@ -21,8 +22,40 @@ class Principal extends StatelessWidget {
           )),
           backgroundColor: Colors.yellow,
         ),
-        body: const Text('Hola Mundo!'),
-      ),
-    );
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text('Hola Mundo!', style: TextStyle(color: Colors.white),),
+              const SizedBox(height: 20,),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PaginaDos()),
+                  );
+                },
+                child: const Text('Ir a la pagina 2'),
+              )
+            ],
+          ),
+        ));
+  }
+}
+
+class PaginaDos extends StatelessWidget {
+  const PaginaDos({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text('Pagina Dos'),
+        ),
+        body: const Center(
+          child: Text('Pagina Dos'),
+        ));
   }
 }
