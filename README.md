@@ -1,25 +1,29 @@
 # Bienvenido a flutter basics
 
-Archivos de las prácticas que hemos tenido en la oficina para contruir proyecto de enseñanza.
+Proyecto para preparación en conceptos básicos de flutter
+
+Ideas para el proyecto propuestas
+
+- [ ] app de inventario (navil)
 
 ## Día 1 22/03/24 Creación de los archivos
 
 ### Comandos
 ----
 
-Comando para crear un projecto
+> Comando para crear un projecto
 
 ```
 flutter create <nombre> [--platform=web]
 ```
 
-Comando para agregar plataforma (android, web, windows...etc) a un proyecto ya existente
+> Comando para agregar plataforma (android, web, windows...etc) a un proyecto ya existente
 
 ```
 flutter create . --platform=linux
 ```
 
-iniciar en modo servidor web
+> iniciar en modo servidor web
 ```
 flutter run -d web-server --web-port=8080
 ```
