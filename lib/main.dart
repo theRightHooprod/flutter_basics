@@ -9,9 +9,13 @@ class MainApp extends StatelessWidget
 
 	@override
 	Widget build(BuildContext context) {
-		return const MaterialApp(
-			home: FirstPage(),
-			debugShowCheckedModeBanner: false
+		return MaterialApp(
+			initialRoute: '/',
+			debugShowCheckedModeBanner: false,
+			routes: {
+				'/': (context) => const FirstPage(),
+				'/2': (context) => const SecondPage()
+			}
 		);
 	}
 }
@@ -36,17 +40,16 @@ AppBar genericAppBar(String title, { int color = 0xff4c77f7 })
 	);
 }
 
-ElevatedButton genericNavButton(BuildContext context, String text, Widget page)
+ElevatedButton genericNavButton(BuildContext context, String text, String? router)
 {
 	return ElevatedButton(
 		onPressed: ()
 		{
-			Navigator.pop(context);
-
-			Navigator.push(
-				context,
-				MaterialPageRoute(builder: (context) => page)
-			);
+			if (router == null) {
+				Navigator.pop(context);
+			} else {
+				Navigator.pushNamed(context, router);
+			}
 		},
 		child: Text(text)
 	);
@@ -65,7 +68,7 @@ class FirstPage extends StatelessWidget
 			appBar: genericAppBar("First Page"),
 			body: Center(
 				child: Center(
-					child: genericNavButton(context, "Go to page two", const SecondPage())
+					child: genericNavButton(context, "Go to page two", '/2')
 				)
 			)
 		);
@@ -83,7 +86,7 @@ class SecondPage extends StatelessWidget
 		return Scaffold(
 			appBar: genericAppBar("Second Page", color: 0xfff74c4c),
 			body: Center(
-				child: genericNavButton(context, "Go to page one", const MainApp())
+				child: genericNavButton(context, "Go to page one", null)
 			)
 		);
 	}
