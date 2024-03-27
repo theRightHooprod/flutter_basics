@@ -27,7 +27,7 @@ class Principal extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text('Hola Mundo!', style: TextStyle(color: Colors.white),),
+              const Text('Hola Mundo! Me gusta el pito', style: TextStyle(color: Colors.white),),
               const SizedBox(height: 20,),
               ElevatedButton(
                 onPressed: () {
