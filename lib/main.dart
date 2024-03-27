@@ -1,61 +1,90 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: Principal()));
+void main() => runApp(const MainApp());
+
+
+class MainApp extends StatelessWidget
+{
+	const MainApp({ super.key });
+
+	@override
+	Widget build(BuildContext context) {
+		return const MaterialApp(
+			home: FirstPage(),
+			debugShowCheckedModeBanner: false
+		);
+	}
 }
 
-class Principal extends StatelessWidget {
-  const Principal({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.red,
-        appBar: AppBar(
-          foregroundColor: Colors.white,
-          title: const Center(
-              child: Text(
-            'Hola',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          )),
-          backgroundColor: Colors.yellow,
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text('Hola Mundo soy lima! Me gusta el pito', style: TextStyle(color: Colors.white),),
-              const SizedBox(height: 20,),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const PaginaDos()),
-                  );
-                },
-                child: const Text('Ir a la pagina 2'),
-              )
-            ],
-          ),
-        ));
-  }
+
+AppBar genericAppBar(String title, { int color = 0xff4c77f7 })
+{
+	return AppBar(
+		title: Center(
+			child: Text(
+				title,
+				style: const TextStyle(
+					fontWeight: FontWeight.bold
+				),
+				textScaler: const TextScaler.linear(2),
+				textAlign: TextAlign.center
+			),
+		),
+		backgroundColor: Color(color),
+		foregroundColor: Colors.white
+	);
 }
 
-class PaginaDos extends StatelessWidget {
-  const PaginaDos({super.key});
+ElevatedButton genericNavButton(BuildContext context, String text, Widget page)
+{
+	return ElevatedButton(
+		onPressed: ()
+		{
+			Navigator.pop(context);
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Pagina Dos'),
-        ),
-        body: const Center(
-          child: Text('Pagina Dos'),
-        ));
-  }
+			Navigator.push(
+				context,
+				MaterialPageRoute(builder: (context) => page)
+			);
+		},
+		child: Text(text)
+	);
+}
+
+
+
+class FirstPage extends StatelessWidget
+{
+	const FirstPage({ super.key });
+
+	@override
+	Widget build(BuildContext context)
+	{
+		return Scaffold(
+			appBar: genericAppBar("First Page"),
+			body: Center(
+				child: Center(
+					child: genericNavButton(context, "Go to page two", const SecondPage())
+				)
+			)
+		);
+	}
+}
+
+
+class SecondPage extends StatelessWidget
+{
+	const SecondPage({ super.key });
+
+	@override
+	Widget build(BuildContext context)
+	{
+		return Scaffold(
+			appBar: genericAppBar("Second Page", color: 0xfff74c4c),
+			body: Center(
+				child: genericNavButton(context, "Go to page one", const MainApp())
+			)
+		);
+	}
 }
