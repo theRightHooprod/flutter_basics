@@ -10,9 +10,9 @@ class SecondPage extends StatelessWidget
 	Widget build(BuildContext context)
 	{
 		return Scaffold(
-			appBar: genericAppBar("Second Page", color: 0xfff74c4c),
+			appBar: Utils.genericAppBar("Second Page", color: 0xfff74c4c),
 			body: Center(
-				child: genericNavButton(context, "Go to page one", null)
+				child: Utils.genericNavButton(context, "Go to page one", null)
 			)
 		);
 	}

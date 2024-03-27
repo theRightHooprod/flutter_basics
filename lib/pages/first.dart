@@ -10,10 +10,10 @@ class FirstPage extends StatelessWidget
 	Widget build(BuildContext context)
 	{
 		return Scaffold(
-			appBar: genericAppBar("First Page"),
+			appBar: Utils.genericAppBar("First Page"),
 			body: Center(
 				child: Center(
-					child: genericNavButton(context, "Go to page two", '/2')
+					child: Utils.genericNavButton(context, "Go to page two", '/2')
 				)
 			)
 		);

@@ -1,37 +1,39 @@
 import 'package:flutter/material.dart';
 
 
-AppBar genericAppBar(String title, { int color = 0xff4c77f7 })
+
+class Utils
 {
-	return AppBar(
-		title: Center(
-			child: Text(
-				title,
-				style: const TextStyle(
-					fontWeight: FontWeight.bold
+	static AppBar genericAppBar(String title, { int color = 0xff4c77f7 })
+	{
+		return AppBar(
+			title: Center(
+				child: Text(
+					title,
+					style: const TextStyle(
+						fontWeight: FontWeight.bold
+					),
+					textScaler: const TextScaler.linear(2),
+					textAlign: TextAlign.center
 				),
-				textScaler: const TextScaler.linear(2),
-				textAlign: TextAlign.center
 			),
-		),
-		backgroundColor: Color(color),
-		foregroundColor: Colors.white
-	);
+			backgroundColor: Color(color),
+			foregroundColor: Colors.white
+		);
+	}
+
+	static ElevatedButton genericNavButton(BuildContext context, String text, String? router)
+	{
+		return ElevatedButton(
+			onPressed: ()
+			{
+				if (router == null) {
+					Navigator.pop(context);
+				} else {
+					Navigator.pushNamed(context, router);
+				}
+			},
+			child: Text(text)
+		);
+	}
 }
-
-ElevatedButton genericNavButton(BuildContext context, String text, String? router)
-{
-	return ElevatedButton(
-		onPressed: ()
-		{
-			if (router == null) {
-				Navigator.pop(context);
-			} else {
-				Navigator.pushNamed(context, router);
-			}
-		},
-		child: Text(text)
-	);
-}
-
-
